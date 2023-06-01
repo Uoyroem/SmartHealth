@@ -1,0 +1,21 @@
+﻿<Page x:Class="SmartHealth.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SmartHealth.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Главная страница">
+
+    <StackPanel>
+        <TextBlock VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Margin="0,0,0,20">О нас</TextBlock>
+        <TextBlock TextWrapping="Wrap" Text="В рамках государственно-частного партнерства (ГЧП), в июле 2014 года было создано ТОО &quot;Smart Health University City&quot; (далее - Smart Health), в уставной капитал которого была внесена интеллектуальная собственность КазНУ им. аль-Фараби. При создании Медицинского центра внедрен южно-корейский опыт эффективного управления с активным участием партнёров из южно-корейского университета Ёнсе (Yoncei University) и его клиники Северанс (Severance)." Margin="0,0,0,10"/>
+        <Image Source="{DynamicResource BuildingImage}" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Margin="0,0,0,10"/>
+        <TextBlock TextWrapping="Wrap">
+                    С целью практического изучения корейского опыта наши работники прошли стажировку и получили неоценимый опыт менеджмента и логистики в одной из лучших больниц Южной Кореи в госпитале &quot;Kangnam Severance&quot;. <LineBreak/>
+                    8 декабря 2014 года Первый Президент Республики Казахстан - Елбасы Нурсултан Назарбаев – при посещении КазНУ им аль-Фараби открыл Медицинский центр, тем самым запустил реализацию I этапа университетского медико-биологического кластера.  <LineBreak/>
+                    В 2019 году Smart Health исполнилось 5 лет. Коллектив составил около 1000 человек.
+        </TextBlock>
+    </StackPanel>
+</Page>
