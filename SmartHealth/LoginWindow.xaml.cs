@@ -44,9 +44,12 @@ namespace SmartHealth
                     }
                     else
                     {
-                        var app = (App)Application.Current;
-                        app.User = user;
-                        app.UserLoggedAsAdmin = loginAsAdmin;
+                        if (Application.Current.MainWindow is MainWindow mainWindow)
+                        {
+                            mainWindow.ViewModel.User = user;
+                            mainWindow.ViewModel.UserLoggedAsAdmin = loginAsAdmin;
+                        }
+                       
                         Close();
                     }
                 } 

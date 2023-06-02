@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:SmartHealth"
              xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:w="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Color x:Key="PrimaryColor">#123E91</Color>
@@ -30,14 +31,6 @@
             <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
         </Style>
 
-        <Style x:Key="VisibleIfUserIsNotNone">
-            <Style.Triggers>
-                <MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Source={x:Static Application.}, Path=}"/>
-                    </MultiDataTrigger.Conditions>
-                </MultiDataTrigger>
-            </Style.Triggers>
-        </Style>
+        
     </Application.Resources>
 </Application>
