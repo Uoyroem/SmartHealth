@@ -44,15 +44,13 @@ namespace SmartHealth
                     }
                     else
                     {
-                        if (Application.Current.MainWindow is MainWindow mainWindow)
-                        {
-                            mainWindow.ViewModel.User = user;
-                            mainWindow.ViewModel.UserLoggedAsAdmin = loginAsAdmin;
-                        }
-                       
+                        var mainViewModel = ((App)Application.Current).MainViewModel;
+                        mainViewModel.User = user;
+                        mainViewModel.UserLoggedAsAdmin = loginAsAdmin;
+
                         Close();
                     }
-                } 
+                }
                 else
                 {
                     errors.Add($"Имя пользователя или пароль не верен.");

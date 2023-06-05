@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +16,13 @@ using System.Windows.Shapes;
 namespace SmartHealth.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ServicesPage.xaml
+    /// Логика взаимодействия для MakeAnAppointmentPage.xaml
     /// </summary>
-    public partial class ServicesPage : Page
+    public partial class MakeAnAppointmentPage : Page
     {
-        public ServicesPage()
+        public MakeAnAppointmentPage()
         {
             InitializeComponent();
-            DataContext = ((App)Application.Current).MainViewModel;
         }
     }
 }

@@ -17,8 +17,38 @@ namespace SmartHealth
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
+    public class MainViewModel : ViewModel
+    {
+        public User? User
+        {
+            get { return _user; }
+            set
+            {
+                _user = value;
+                OnPropertyChanged(nameof(User));
+            }
+        }
+
+        public bool UserLoggedAsAdmin
+        {
+            get { return _userLoggedAsAdmin; }
+            set
+            {
+                _userLoggedAsAdmin = value;
+                OnPropertyChanged(nameof(UserLoggedAsAdmin));
+            }
+        }
+
+        private User? _user = null;
+        private bool _userLoggedAsAdmin = false;
+    }
     public partial class App : Application
     {
-        
+        public MainViewModel MainViewModel { get; init; }
+
+        public App() 
+        {
+            MainViewModel = new();
+        }
     }
 }

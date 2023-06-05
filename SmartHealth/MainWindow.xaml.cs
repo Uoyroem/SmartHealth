@@ -15,58 +15,33 @@ using System.Windows.Shapes;
 
 namespace SmartHealth
 {
-    public class MainWindowViewModel : ViewModel
-    {
-        public User? User 
-        { 
-            get { return _user;  }
-            set
-            {
-                _user = value;
-                OnPropertyChanged(nameof(User));
-            } 
-        }
-
-        public bool UserLoggedAsAdmin 
-        {
-            get { return _userLoggedAsAdmin; }
-            set 
-            {
-                _userLoggedAsAdmin = value;
-                OnPropertyChanged(nameof(UserLoggedAsAdmin));
-            }
-        }
-
-        private User? _user = null;
-        private bool _userLoggedAsAdmin = false;
-    }
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindowViewModel ViewModel { get; init; }
-
         public readonly Uri homePageUri = new("Pages/HomePage.xaml", UriKind.Relative);
         public readonly Uri specialistsPageUri = new("Pages/SpecialistsPage.xaml", UriKind.Relative);
         public readonly Uri servicesPageUri = new("Pages/ServicesPage.xaml", UriKind.Relative);
+        public readonly Uri makeAnAppointmentPageUri = new("Pages/MakeAnAppointmentPage.xaml", UriKind.Relative);
 
         public void NavigateHomePage() => Frame.Navigate(homePageUri);
         public void NavigateSpecialistsPage() => Frame.Navigate(specialistsPageUri);
         public void NavigateServicesPage() => Frame.Navigate(servicesPageUri);
+        public void NavigateMakeAnAppointmentPage() => Frame.Navigate(makeAnAppointmentPageUri);
+
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = ViewModel = new MainWindowViewModel();
+            DataContext = ((App)Application.Current).MainViewModel;
         }
 
         private void SpecialistsNavigationButton_Click(object sender, RoutedEventArgs e) => NavigateSpecialistsPage();
-
         private void SmartHealthImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => NavigateHomePage();
-
         private void ServicesNavigationButton_Click(object sender, RoutedEventArgs e) => NavigateServicesPage();
+        private void MakeAnAppointmentButton_Click(object sender, RoutedEventArgs e) => NavigateMakeAnAppointmentPage();
+
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
@@ -95,5 +70,6 @@ namespace SmartHealth
             };
             loginWindow.Show();
         }
+
     }
 }

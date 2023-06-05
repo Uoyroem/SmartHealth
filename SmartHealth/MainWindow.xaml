@@ -7,24 +7,6 @@
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         mc:Ignorable="d"
         Title="SmartHealth" Height="424" Width="800" MinWidth="780">
-    <Window.Resources>
-        <Style x:Key="VisibleIfUserIsNull">
-            <Setter Property="UIElement.Visibility" Value="Collapsed"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding User}" Value="{x:Null}">
-                    <Setter Property="UIElement.Visibility" Value="Visible"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="VisibleIfUserIsNotNull" TargetType="StackPanel">
-            <Setter Property="UIElement.Visibility" Value="Visible"/>
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding User}" Value="{x:Null}">
-                    <Setter Property="UIElement.Visibility" Value="Collapsed"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
     <ScrollViewer>
         <StackPanel>
             <StackPanel Background="{StaticResource PrimaryColorBrush}">
@@ -75,7 +57,6 @@
                 <StackPanel Style="{StaticResource ContainerStyle}">
                     <Border Padding="0,6,0,6">
                         <Grid>
-
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
@@ -83,11 +64,12 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                                 <Button x:Name="SpecialistsNavigationButton" Content="СПЕЦИАЛИСТЫ" Style="{StaticResource NavigationButtonStyle}" VerticalAlignment="Center" Click="SpecialistsNavigationButton_Click"/>
                                 <Button x:Name="ServicesNavigationButton" Content="УСЛУГИ" Style="{StaticResource NavigationButtonStyle}" Margin="30,0,0,0" VerticalAlignment="Center" Click="ServicesNavigationButton_Click"/>
+                                <Button x:Name="MakeAnAppointmentButton" Content="ЗАПИСЬ НА ПРИЕМ" Style="{StaticResource NavigationButtonStyle}" Margin="30,0,0,0" VerticalAlignment="Center" Click="MakeAnAppointmentButton_Click"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" >
                                 <StackPanel Style="{StaticResource VisibleIfUserIsNull}" Orientation="Horizontal">
-                                    <Button x:Name="LoginButton" Content="Войти" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource PrimaryColorBrush}" Foreground="White" Padding="8,8,8,8" Click="LoginButton_Click" />
-                                    <Button x:Name="SignUpButton" Content="Регистрация" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{DynamicResource PrimaryColorBrush}" Margin="30,0,0,0" Click="SignUpButton_Click"/>
+                                    <Button x:Name="LoginButton" Content="Войти" Style="{StaticResource ButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LoginButton_Click"/>
+                                    <Button x:Name="SignUpButton" Content="Регистрация" Style="{StaticResource NavigationButtonStyle}" Margin="30,0,0,0" Click="SignUpButton_Click"/>
                                 </StackPanel>
                                 <StackPanel Style="{StaticResource VisibleIfUserIsNotNull}" Orientation="Horizontal">
                                     <TextBlock Text="{Binding User.Username}"/>
