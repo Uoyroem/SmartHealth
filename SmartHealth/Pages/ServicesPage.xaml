@@ -7,8 +7,76 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Услуги">
-
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <TreeView FontSize="16" Margin="0,0,0,10" BorderBrush="{x:Null}">
+            <TextBlock FontSize="18" Foreground="{DynamicResource PrimaryColorBrush}">Наши услуги и цены:</TextBlock>
+            <TreeViewItem Header="Приём врачей">
+                <TreeViewItem Header="Терапевт, психолог, кардиолог, невропатолог, эндокринолог, гастроэнтеролог, дерматовенеролог, реабилитолог, стоматолог-терапевт, физиотерапевт - 5000 тг"/>
+                <TreeViewItem Header="Акушер-гинеколог - 5000 тг"/>
+                <TreeViewItem Header="Хирург, оториноларинголог, офтальмолог, уролог, онколог, маммолог - 5000 тг"/>
+            </TreeViewItem>
+        </TreeView>
+        <Image Source="{StaticResource Service1Image}" Margin="0,0,0,10"/>
+        <TreeView FontSize="16" BorderBrush="{x:Null}" Margin="0,0,0,10">
+            <TextBlock FontSize="18" Foreground="{DynamicResource PrimaryColorBrush}">Обследования:</TextBlock>
+            <TreeViewItem Header="УЗИ">
+                <TreeViewItem Header="Брюшная полость (печень, желчный пузырь, поджелудочная железа, селезенка, почки) - 5 000 тг"/>
+                <TreeViewItem Header="Мочевой пузырь с определением остаточной мочи - 2 000 тг"/>
+                <TreeViewItem Header="Мягкие ткани - 3 000 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Диагностика">
+                <TreeViewItem Header="Нейросонография - 5 000 тг"/>
+                <TreeViewItem Header="Спирография при записи на автоматизированных аппаратах - 5 000 тг"/>
+                <TreeViewItem Header="ФГДС - 6 000 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="ЭКГ">
+                <TreeViewItem Header="Электрокардиографическое исследование с дозированной физической нагрузкой (тредмил, велоэргометр) - 6 000 тг"/>
+                <TreeViewItem Header="Холтер ЭКГ (суточное мониторирование электрокардиограммы) - 10 000 тг"/>
+                <TreeViewItem Header="Эхокардиография - 5 000 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Рентген">
+                <TreeViewItem Header="Диагностическая флюорография (1 проекция) - 1 200 тг"/>
+                <TreeViewItem Header="Рентгенография шейного отдела позвоночника - 3 400 тг, грудного отдела позвоночника - 3 200 тг"/>
+                <TreeViewItem Header="Рентгеноскопия органов грудной клетки -	2 600 тг. Описание одной рентгенограммы - 800 тг"/>
+            </TreeViewItem>
+        </TreeView>
+        <Image Source="{StaticResource Service2Image}" Margin="0,0,0,10"/>
+        <TreeView FontSize="16" Margin="0,0,0,10" BorderBrush="{x:Null}">
+            <TreeViewItem Header="Офтальмология">
+                <TreeViewItem Header="Биомикроскопия глаза (1 глаз) - 1 100 тг. Измерение внутриглазного давления по Маклакову (1 глаз) - 1 100 тг"/>
+                <TreeViewItem Header="Массаж слезного мешка/век (1 глаз) - 600 тг."/>
+                <TreeViewItem Header="Подбор очков: сложная коррекция (2 глаза) - 1 700 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Хирургия">
+                <TreeViewItem Header="Снятие/наложение швов, перевязки"/>
+                <TreeViewItem Header="Удаление ногтевой пластинки - 3 500 тг. Вскрытие парапроктита  4 900 тг,  фурункула - 3 400 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Гинекология">
+                <TreeViewItem Header="Забор мазка на онкоцитологию	- 900 тг."/>
+                <TreeViewItem Header="Введение внутриматочного противозачаточного устройства - 4 400 тг, извлечение - 3 000 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Урология">
+                <TreeViewItem Header="Внутрикавернозная инъекция - 5 500 тг. Блокада семенного канатика - 5 500 тг, блокада шейки мочевого пузыря, 1 процедура - 5 500 тг"/>
+                <TreeViewItem Header="Удаление полипа уретры - 22 000 тг, инстилляция уретры - 1 650 тг"/>
+                <TreeViewItem Header="Взятие секрета простаты - 2 500 тг, массаж простаты - 2 200 тг"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Отоларингология">
+                <TreeViewItem Header="Эндоскопический осмотр - 2 200 тг"/>
+                <TreeViewItem Header="Промывание ЛОР органов на аппарате - 2 200 тг, промывание полости носа методом перемещения (Кукушка) - 1 650 тг"/>
+                <TreeViewItem Header="Вскрытие и дренирование паратонзиллярного пространства	- 3 300  тг"/>
+            </TreeViewItem>
+        </TreeView>
+        <Image Source="{StaticResource Service1Image}" Margin="0,0,0,10"/>
+        <TreeView FontSize="16" BorderBrush="{x:Null}">
+            <TreeViewItem Header="Стоматология">
+                <TreeViewItem Header="Лечение кариеса - от 5 500 тг, пульпита - от 15 000 тг, стоматита - 1 000 тг,  гингивита - 2 500 тг, периодонтита - 16 000 тг"/>
+                <TreeViewItem Header="Снятие зубных отложений Air Flow /Ультразвук (1 челюсть) - 10 000 тг, комплексная чистка - 17 000 тг"/>
+                <TreeViewItem Header="Изготовление и установка съемных и постоянных протезов, коронок, вестибулярны пластинок, капп."/>
+            </TreeViewItem>
+            <TreeViewItem Header="Оформление всех видов справок и больничных листов">
+                <TreeViewItem Header="Больничный лист бланк - 3 000 тг, санаторно-курортная карта (Форма 072/У) - 3 500 тг.  Санитарная книжка А, Б, В  - от  2 000 тг, справка в бассейн - 3 000 тг"/>
+                <TreeViewItem Header="Cправка студенческая (форма 095/у) -  от 3 300 тг. Допуск в общежитие - 500 тг"/>
+            </TreeViewItem>
+        </TreeView>
+    </StackPanel>
 </Page>

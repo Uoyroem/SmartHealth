@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
+using SmartHealth.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,51 +37,26 @@ namespace SmartHealth.Pages
         {
             using var dbContext = new SmartHealthDbContext();
 
-            DoctorUserComboBox.ItemsSource = dbContext.Users.ToList();
             DoctorSpecialityComboBox.ItemsSource = dbContext.Specialities.ToList();
 
-            foreach (var doctor in dbContext.Doctors.ToList())
+            DoctorsListBox.Items.Clear();
+            foreach (var doctor in dbContext.Doctors)
             {
-                using var memoryStream = new MemoryStream(Convert.FromBase64String(doctor.Photo));
-
-                var bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.StreamSource = memoryStream;
-                bitmapImage.EndInit();
-
-                var image = new Image()
-                {
-                    Source = bitmapImage,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    Width = 200,
-                };
-
-                var textBox = new TextBlock()
-                {
-                    Text = doctor.User.Username
-                };
-
-                textBox.SetValue(Grid.ColumnProperty, 1);
-
-                var grid = new Grid()
-                {
-                    ColumnDefinitions =
-                    {
-                        new ColumnDefinition(),
-                        new ColumnDefinition(),
-                        new ColumnDefinition(),
-                    },
-                    Children =
-                    {
-                        image, textBox
-                    },
-                };
-                DoctorsListBox.Items.Add(grid);
+                var doctorListItem = new DoctorListItem(doctor);
+                doctorListItem.OnDelete += DoctorListItem_OnDelete;
+                DoctorsListBox.Items.Add(doctorListItem);
             }
         }
 
-        private void ShowLogs(StackPanel stackPanel, List<string>? errors = null, List<string>? infos = null)
+        private void DoctorListItem_OnDelete(Doctor doctor)
+        {
+            using var dbContext = new SmartHealthDbContext();
+            dbContext.Doctors.Remove(doctor);
+            dbContext.SaveChanges();
+            RefreshDatas();
+        }
+
+        private static void ShowLogs(StackPanel stackPanel, List<string>? errors = null, List<string>? infos = null)
         {
             stackPanel.Children.Clear();
             if (errors != null)
@@ -153,10 +129,10 @@ namespace SmartHealth.Pages
                 errors.Add($"Фотографий по пути {DoctorPhotoPath.Text} не существует.");
                 elementToFocus = DoctorPhotoPath;
             }
-            if (DoctorUserComboBox.SelectedItem == null)
+            if (DoctorNameTextBox.Text == "")
             {
                 errors.Add($"Укажите пользователя.");
-                elementToFocus = DoctorUserComboBox;
+                elementToFocus = DoctorNameTextBox;
             }
             if (DoctorSpecialityComboBox.SelectedItem == null)
             {
@@ -186,7 +162,7 @@ namespace SmartHealth.Pages
                 return;
             }
 
-            var user = (User)DoctorUserComboBox.SelectedItem;
+            var name = DoctorNameTextBox.Text;
             var speciality = (Speciality)DoctorSpecialityComboBox.SelectedItem;
             var workExperience = int.Parse(DoctorWorkExperienceTextBox.Text);
             string photo = Convert.ToBase64String(File.ReadAllBytes(DoctorPhotoPath.Text));
@@ -195,7 +171,7 @@ namespace SmartHealth.Pages
             using var dbContext = new SmartHealthDbContext();
             dbContext.Doctors.Add(new Doctor()
             {
-                UserId = user.Id,
+                Name = name,
                 SpecialityId = speciality.Id,
                 WorkExperience = workExperience,
                 Photo = photo,
@@ -204,8 +180,8 @@ namespace SmartHealth.Pages
             dbContext.SaveChanges();
 
             ShowLogs(DoctorCreationLogsStackPanel, infos: new List<string>() { "Врач создан!" });
-            DoctorUserComboBox.SelectedItem = DoctorSpecialityComboBox.SelectedItem = null;
-            DoctorWorkExperienceTextBox.Text = DoctorPhotoPath.Text = DoctorAcademicDegreeTextBox.Text = "";
+            DoctorSpecialityComboBox.SelectedItem = null;
+            DoctorNameTextBox.Text = DoctorWorkExperienceTextBox.Text = DoctorPhotoPath.Text = DoctorAcademicDegreeTextBox.Text = "";
             RefreshDatas();
         }
     }

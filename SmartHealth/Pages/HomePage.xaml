@@ -9,7 +9,7 @@
       Title="Главная страница">
 
     <StackPanel>
-        <TextBlock VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Margin="0,0,0,20">О нас</TextBlock>
+        <TextBlock Style="{StaticResource TitleStyle}">О нас</TextBlock>
         <TextBlock TextWrapping="Wrap" Text="В рамках государственно-частного партнерства (ГЧП), в июле 2014 года было создано ТОО &quot;Smart Health University City&quot; (далее - Smart Health), в уставной капитал которого была внесена интеллектуальная собственность КазНУ им. аль-Фараби. При создании Медицинского центра внедрен южно-корейский опыт эффективного управления с активным участием партнёров из южно-корейского университета Ёнсе (Yoncei University) и его клиники Северанс (Severance)." Margin="0,0,0,10"/>
         <Image Source="{DynamicResource BuildingImage}" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Margin="0,0,0,10"/>
         <TextBlock TextWrapping="Wrap">

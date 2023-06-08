@@ -43,8 +43,8 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock FontSize="16" FontWeight="Bold" Grid.ColumnSpan="6">Создать врача</TextBlock>
-                <Label Grid.Row="1" Content="Пользователь" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                <ComboBox x:Name="DoctorUserComboBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" DisplayMemberPath="Username"/>
+                <Label Grid.Row="1" Content="Имя врача" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+                <TextBox x:Name="DoctorNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
                 <Label Grid.Row="2" Content="Специальность" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
                 <ComboBox x:Name="DoctorSpecialityComboBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" DisplayMemberPath="Name"/>
                 <Label Grid.Row="3" Content="Ученая степень" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>

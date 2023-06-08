@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <None Remove="Resources\Images\Building.jpg" />
+    <None Remove="Resources\Images\Service1.jpg" />
+    <None Remove="Resources\Images\Service2.jpg" />
     <None Remove="Resources\Images\SmartHealth.png" />
   </ItemGroup>
 
@@ -24,6 +26,12 @@
 
   <ItemGroup>
     <Resource Include="Resources\Images\Building.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Service1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Service2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\SmartHealth.png">

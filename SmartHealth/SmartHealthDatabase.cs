@@ -26,8 +26,7 @@ namespace SmartHealth
     public class Doctor
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; } = null!;
+        public string Name { get; set; } = null!;
         public int SpecialityId { get; set; }
         public Speciality Speciality { get; set; } = null!;
         public int WorkExperience { get; set; }
@@ -50,7 +49,7 @@ namespace SmartHealth
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SmartHealthDatabase;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Uoyro\\source\\repos\\SmartHealth\\SmartHealth\\SmartHealthDatabase.mdf;Integrated Security=True");
             }
         }
 
