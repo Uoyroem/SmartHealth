@@ -9,66 +9,68 @@
       Title="Специалисты">
     <!---->
     <StackPanel>
-        <StackPanel Style="{StaticResource VisibleIfUserLoggedAsAdmin}" Margin="0,0,0,35">
-            <Grid Margin="0,0,0,20">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+        <TextBlock Text="Специальности" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource PrimaryColorBrush}"/>
+        <Grid Style="{StaticResource VisibleIfUserLoggedAsAdmin}" Margin="0,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="16" FontWeight="Bold" Grid.ColumnSpan="6">Создать специальность</TextBlock>
+            <Label Grid.Row="1" Content="Имя специальности" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="SpecialityNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="SpecialityCreationButton" Grid.Row="2" Content="Создать" VerticalAlignment="Center" HorizontalAlignment="Left" Click="SpecialityCreationButton_Click" />
+            <StackPanel Grid.Row="3" x:Name="SpecialityCreationLogsStackPanel" Margin="0,3,0,3"/>
+        </Grid>
+        <ListBox x:Name="SpecialistsListBox" Margin="0,0,0,35"/>
+        <TextBlock Text="Специалисты" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource PrimaryColorBrush}"/>
+
+        <Grid Style="{StaticResource VisibleIfUserLoggedAsAdmin}" Margin="0,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="16" FontWeight="Bold" Grid.ColumnSpan="6">Создать специалиста</TextBlock>
+            <Label Grid.Row="1" Content="Имя врача" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="DoctorNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+            <Label Grid.Row="2" Content="Специальность" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <ComboBox x:Name="DoctorSpecialityComboBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" DisplayMemberPath="Name"/>
+            <Label Grid.Row="3" Content="Ученая степень" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="DoctorAcademicDegreeTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"></TextBox>
+            <Label Grid.Row="4" Content="Опыт работы" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="DoctorWorkExperienceTextBox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"></TextBox>
+            <Label Grid.Row="5" Content="Фотография" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+
+            <Grid Grid.Row="5" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock FontSize="16" FontWeight="Bold" Grid.ColumnSpan="6">Создать специальность</TextBlock>
-                <Label Grid.Row="1" Content="Имя специальности" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                <TextBox x:Name="SpecialityNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-                <Button Style="{StaticResource ButtonStyle}" x:Name="SpecialityCreationButton" Grid.Row="2" Content="Создать" VerticalAlignment="Center" HorizontalAlignment="Left" Click="SpecialityCreationButton_Click" />
-                <StackPanel Grid.Row="3" x:Name="SpecialityCreationLogsStackPanel" Margin="0,3,0,3"/>
+                <TextBox x:Name="DoctorPhotoPath"  VerticalAlignment="Center" IsEnabled="False"></TextBox>
+                <Button Grid.Column="1" x:Name="DoctorPhotoPathSelectionButton" Style="{StaticResource ButtonStyle}" Content="Выбрать" VerticalAlignment="Center" Click="DoctorPhotoPathSelectionButton_Click" HorizontalAlignment="Right" />
             </Grid>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock FontSize="16" FontWeight="Bold" Grid.ColumnSpan="6">Создать врача</TextBlock>
-                <Label Grid.Row="1" Content="Имя врача" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                <TextBox x:Name="DoctorNameTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-                <Label Grid.Row="2" Content="Специальность" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                <ComboBox x:Name="DoctorSpecialityComboBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" DisplayMemberPath="Name"/>
-                <Label Grid.Row="3" Content="Ученая степень" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                <TextBox x:Name="DoctorAcademicDegreeTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"></TextBox>
-                <Label Grid.Row="4" Content="Опыт работы" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
-                <TextBox x:Name="DoctorWorkExperienceTextBox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"></TextBox>
-                <Label Grid.Row="5" Content="Фотография" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
 
-                <Grid Grid.Row="5" Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="DoctorPhotoPath"  VerticalAlignment="Center" IsEnabled="False"></TextBox>
-                    <Button Grid.Column="1" x:Name="DoctorPhotoPathSelectionButton" Style="{StaticResource ButtonStyle}" Content="Выбрать" VerticalAlignment="Center" Click="DoctorPhotoPathSelectionButton_Click" HorizontalAlignment="Right" />
-                </Grid>
-                
 
-                
 
-                <Button x:Name="DoctorCreationButton" Style="{StaticResource ButtonStyle}" Grid.Row="6" Content="Создать" VerticalAlignment="Center" HorizontalAlignment="Left" Click="DoctorCreationButton_Click" />
-                <StackPanel Grid.Row="7" x:Name="DoctorCreationLogsStackPanel" Margin="0,3,0,3"/>
-            </Grid>
-        </StackPanel>
+
+            <Button x:Name="DoctorCreationButton" Style="{StaticResource ButtonStyle}" Grid.Row="6" Content="Создать" VerticalAlignment="Center" HorizontalAlignment="Left" Click="DoctorCreationButton_Click" />
+            <StackPanel Grid.Row="7" x:Name="DoctorCreationLogsStackPanel" Margin="0,3,0,3"/>
+        </Grid>
         <ListBox x:Name="DoctorsListBox"></ListBox>
     </StackPanel>
     

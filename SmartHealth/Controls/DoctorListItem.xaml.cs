@@ -21,13 +21,38 @@ namespace SmartHealth.Controls
     /// </summary>
     
 
-    public class DoctorViewModel : MainViewModel
+    public sealed class DoctorListItemViewModel : MainViewModel
     {
-        public Doctor? Doctor { get; set; } = null;
-        public BitmapImage? Photo { get; set; } = null;
+        public Doctor? Doctor
+        {
+            get
+            {
+                return _doctor;
+            }
+            set
+            {
+                _doctor = value;
+                OnPropertyChanged();
+            }
+        }
+        public BitmapImage? Photo 
+        { 
+            get
+            {
+                return _photo;
+            }
+            set
+            {
+                _photo = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Doctor? _doctor;
+        private BitmapImage? _photo;
     }
 
-    public partial class DoctorListItem : UserControl
+    public partial class DoctorListItem : UserControl, IDeleteable<Doctor>
     {
         public event Action<Doctor>? OnDelete;
 
@@ -49,13 +74,17 @@ namespace SmartHealth.Controls
 
             var mainViewModel = ((App)Application.Current).MainViewModel;
 
-            DataContext = new DoctorViewModel() 
+            var viewModel = new DoctorListItemViewModel()
             {
-                User = mainViewModel.User, 
-                Doctor = doctor,
+                User = mainViewModel.User,
                 UserLoggedAsAdmin = mainViewModel.UserLoggedAsAdmin,
+                Doctor = doctor,
                 Photo = bitmapImage
             };
+
+            mainViewModel.PropertyChanged += viewModel.Redirector();
+
+            DataContext = viewModel;
         }
 
         private void MakeAnAppointmentButton_Click(object sender, RoutedEventArgs e)

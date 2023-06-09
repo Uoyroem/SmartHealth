@@ -25,7 +25,7 @@ namespace SmartHealth
             set
             {
                 _user = value;
-                OnPropertyChanged(nameof(User));
+                OnPropertyChanged();
             }
         }
 
@@ -35,11 +35,11 @@ namespace SmartHealth
             set
             {
                 _userLoggedAsAdmin = value;
-                OnPropertyChanged(nameof(UserLoggedAsAdmin));
+                OnPropertyChanged();
             }
         }
 
-        private User? _user = null;
+        private User? _user;
         private bool _userLoggedAsAdmin = false;
     }
     public partial class App : Application

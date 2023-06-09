@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,6 +47,22 @@ namespace SmartHealth.Pages
                 doctorListItem.OnDelete += DoctorListItem_OnDelete;
                 DoctorsListBox.Items.Add(doctorListItem);
             }
+
+            SpecialistsListBox.Items.Clear();
+            foreach (var speciality in dbContext.Specialities)
+            {
+                var specialityListItem = new SpecialityListItem(speciality);
+                specialityListItem.OnDelete += SpecialityListItem_OnDelete;
+                SpecialistsListBox.Items.Add(specialityListItem);
+            }
+        }
+
+        private void SpecialityListItem_OnDelete(Speciality speciality)
+        {
+            using var dbContext = new SmartHealthDbContext();
+            dbContext.Specialities.Remove(speciality);
+            dbContext.SaveChanges();
+            RefreshDatas();
         }
 
         private void DoctorListItem_OnDelete(Doctor doctor)

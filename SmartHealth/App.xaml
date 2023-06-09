@@ -74,5 +74,12 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource VisibleIfUserLoggedAsAdmin}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Padding" Value="8,5,8,5"/>
+        </Style>
     </Application.Resources>
 </Application>
